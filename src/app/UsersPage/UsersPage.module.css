@@ -1,0 +1,17 @@
+.userscontainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  gap: 2px;
+}
+
+.userbox {
+  height: 30px;
+  width: 80%;
+  margin: auto;
+  border: 3px;
+  border-style: solid;
+  border-color: blue;
+  border-radius: 5px;
+}

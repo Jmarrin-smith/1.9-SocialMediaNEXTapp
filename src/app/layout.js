@@ -1,5 +1,14 @@
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "./pagecomponants/nav/nav";
+import { NoUser } from "@/componants/NoUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,8 +19,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          <Navbar />
+          <SignedOut>
+            <NoUser />
+          </SignedOut>
+          <SignedIn>
+            {" "}
+            <div className="wrappercontent">
+              <div className="container">{children}</div>
+            </div>
+          </SignedIn>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
